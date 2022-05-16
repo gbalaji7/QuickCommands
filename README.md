@@ -7,10 +7,6 @@ nmap -sS -Pn -p 22,25,80,443,139,445,3306,1433,5432,1521,27001,8080,8000,8088,84
 ```
 nmap -sS -Pn --open -vvvv -iL <file> -oA nmap_1k
 ```
-#### Nmap 1k
-```
-nmap -sS -Pn --open -vvvv -iL <file> -oA nmap_1k
-```
 #### Masscan + nmap version Full
 ```
 masscan -p 1-65535 --rate 10000 --wait 0 --open -iL ip.txt -oX masscan.xml
