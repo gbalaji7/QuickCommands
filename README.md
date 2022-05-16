@@ -1,8 +1,17 @@
-## Poisoining Attack
+## Poisoning Attack
 
 #### Responder
 ```
 responder -I eth0
+```
+#### IPv6 DHCP Rogue Server 
+Install Mitm6
+```
+pip install mitm6
+```
+
+```
+mitm6 -i eth0
 ```
 
 #### Generate SMB Signing Disabled Hosts
