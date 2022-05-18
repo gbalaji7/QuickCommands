@@ -121,7 +121,18 @@ Write-Output "[+] Printing Applocker Rules [+]`n"
 ```
 https://github.com/khr0x40sh/WhiteListEvasion
 ```
-
+#### Cmd.exe dll
+```
+https://github.com/DidierStevens/DidierStevensSuite/blob/master/cmd.dll
+```
+#### P0wned shell
+```
+https://github.com/Cn33liz/p0wnedShell
+```
+#### Mini Powershell
+```
+https://github.com/InfosecMatter/Shells-for-restricted-environments
+```
 ## Poisoning Attack
 
 #### Responder
