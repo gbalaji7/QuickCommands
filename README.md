@@ -1,3 +1,8 @@
+[PORTSCAN](https://github.com/gbalaji7/QuickCommands/edit/main/README.md#portscan)
+[Powershell-execution-bypass-techniques]https://github.com/gbalaji7/QuickCommands/edit/main/README.md#powershell-execution-bypass-techniques
+[GPO Applocker Bypass]https://github.com/gbalaji7/QuickCommands/edit/main/README.md#bypass-gpo-and-applocker-to-execute-powershell
+[Poisoning-attack]https://github.com/gbalaji7/QuickCommands/edit/main/README.md#poisoning-attack
+
 ## Portscan
 #### Nmap Few
 ```
