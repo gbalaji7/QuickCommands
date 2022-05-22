@@ -1,4 +1,4 @@
-[PORTSCAN]()<br />
+[PORTSCAN](https://github.com/gbalaji7/QuickCommands/blob/main/README.md#portscan)<br />
 [Powershell Enumeration Commands](https://github.com/gbalaji7/QuickCommands/blob/main/README.md#powershell-enumeration-commands)<br />
 [Powershell-execution-bypass-techniques](https://github.com/gbalaji7/QuickCommands/blob/main/README.md#powershell-execution-bypass-techniques)<br />
 [GPO Applocker Bypass](https://github.com/gbalaji7/QuickCommands/blob/main/README.md#bypass-gpo-and-applocker-to-execute-powershell)<br />
