@@ -1,8 +1,10 @@
 [PORTSCAN]()<br />
-[Powershell-execution-bypass-techniques](https://github.com/gbalaji7/QuickCommands/edit/main/README.md#powershell-execution-bypass-techniques)<br />
-[GPO Applocker Bypass](https://github.com/gbalaji7/QuickCommands/edit/main/README.md#bypass-gpo-and-applocker-to-execute-powershell)<br />
+[Powershell Enumeration Commands](https://github.com/gbalaji7/QuickCommands/blob/main/README.md#powershell-enumeration-commands)<br />
+[Powershell-execution-bypass-techniques](https://github.com/gbalaji7/QuickCommands/blob/main/README.md#powershell-execution-bypass-techniques)<br />
+[GPO Applocker Bypass](https://github.com/gbalaji7/QuickCommands/blob/main/README.md#bypass-gpo-and-applocker-to-execute-powershell)<br />
 [Poisoning-attack](https://github.com/gbalaji7/QuickCommands/edit/main/README.md#poisoning-attack)<br />
-[AMSI Bypass]()<br />
+[AMSI Bypass](https://github.com/gbalaji7/QuickCommands/blob/main/README.md#amsi-bypass-references)<br />
+[Disable Monitoring/Defender](https://github.com/gbalaji7/QuickCommands/blob/main/README.md#disable-monitoringwindefend)<br />
 ## Portscan
 #### Nmap Few
 ```
