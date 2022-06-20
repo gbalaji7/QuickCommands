@@ -5,6 +5,7 @@
 [Poisoning-attack](https://github.com/gbalaji7/QuickCommands/edit/main/README.md#poisoning-attack)<br />
 [AMSI Bypass](https://github.com/gbalaji7/QuickCommands/blob/main/README.md#amsi-bypass-references)<br />
 [Disable Monitoring/Defender](https://github.com/gbalaji7/QuickCommands/blob/main/README.md#disable-monitoringwindefend)<br />
+
 ## Portscan
 #### Nmap Few
 ```
@@ -294,3 +295,38 @@ Set-MpPreference -DisableRealtimeMonitoring $true
 sc config WinDefend start= disabled
 sc stop WinDefend
 ```
+## Github Enumeration
+#### Gitgot
+```
+https://github.com/BishopFox/GitGot
+```
+
+## Azure Enumeration Tools
+#### Password Spray - Trevorspray
+```
+https://github.com/blacklanternsecurity/TREVORspray
+```
+#### AAD Internals
+```
+https://github.com/Gerenios/AADInternals
+```
+```
+https://o365blog.com/aadinternals/
+```
+#### Azure username enumeration
+```
+Invoke-AADIntUserEnumerationAsOutsider -UserName "user@company.com"
+```
+```
+Get-Content .\userlist.txt | Invoke-AADIntUserEnumerationAsOutsider -Method <Normal|Login|Autologon>
+```
+#### Azure Blob search
+```
+https://github.com/NetSPI/MicroBurst/blob/master/Misc/Invoke-EnumerateAzureBlobs.ps1
+Invoke-EnumerateAzureBlobs.ps1 -Base google
+```
+#### Exchange Pentest
+```
+https://github.com/dafthack/MailSniper
+```
+
